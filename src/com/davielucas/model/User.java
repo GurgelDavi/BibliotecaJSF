@@ -14,20 +14,21 @@ import javax.persistence.Table;
 public class User {	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="pk_id_user",nullable=false,unique=true)
-	private int pkIdUser;
+	@Column(name="user_id",nullable=false,unique=true)
+	private int userId;
+	
 	@Column(name="email",nullable=false,unique=true)
 	private String email;
+	
 	@Column(name="password",nullable=false,unique=false)
 	private String password;
 	
-
-	public int getPkIdUser() {
-		return pkIdUser;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setPkIdUser(Integer pkIdUser) {
-		this.pkIdUser = pkIdUser;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getEmail() {

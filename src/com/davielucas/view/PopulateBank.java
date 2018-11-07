@@ -14,7 +14,6 @@ public class PopulateBank {
 		usu2.setEmail("testinho@teste.com");
 		usu2.setPassword("123456");
 		dao.create(usu1);
-		dao.create(usu2);//deve dar erro
 		
 		usu2.setEmail("davi@teste.com");
 		usu2.setPassword("123456");
