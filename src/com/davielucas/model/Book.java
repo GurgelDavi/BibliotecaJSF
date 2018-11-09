@@ -72,7 +72,7 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	public boolean isAvailable() {
+	public boolean getAvailable() {
 		return available;
 	}
 
