@@ -15,7 +15,7 @@ public class UserDaoImpl {
 		EntityManager em = ResourcePersistence.getEntityManager();
 		try {
 			User user = (User) em.createQuery(
-					"SELECT u	FROM user u where u.email and u.password :password")
+					"SELECT u FROM user u where u.email = :email and u.password = :password")
 					.setParameter("email", userEmail)
 					.setParameter("password", userPassword).getSingleResult();
 			
