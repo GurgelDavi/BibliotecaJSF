@@ -28,7 +28,7 @@ public class UserLoginView {
 		} else {
 			this.adm = admDao.read(user);
 			if(adm!=null) {
-				this.isAdm = true;
+				this.setAdm(true);
 			}
 			return "/main";
 		}
@@ -51,12 +51,12 @@ public class UserLoginView {
 	}
 
 	public boolean isAdm() {
-		System.out.println("calling permission");
 		return isAdm;
 	}
 
 	public void setAdm(boolean isAdm) {
 		this.isAdm = isAdm;
 	}
+
 	
 }
