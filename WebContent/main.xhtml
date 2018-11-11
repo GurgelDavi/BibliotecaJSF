@@ -18,10 +18,7 @@
       		<h2 style="margin: 0">Livros Cadastrados:</h2>
       	</div>
       	<div class="ui-g-3">
-      		<p:commandButton 
-      			style="width: 100%" action="/newBook.xhtml" 
-      			value="Adicionar Livro" styleClass="btn btn-success btnSpace" icon="ui-icon-plus"
-      		/>
+      		<p:button style="width: 100%" outcome="newBook" value="Adicionar Livro" icon="ui-icon-plus" />
       	</div>
       </div>
       
@@ -49,17 +46,18 @@
 	            <p:column>
 	                <f:facet name="header">Edição </f:facet>
 	                <h:outputText value="#{book.edition}" />
-	            </p:column>   
+	            </p:column>
+	            
+	               
+	            <p:column>
+	                <f:facet name="header">Disponível</f:facet>
+	                <h:outputText value="#{book.available}" />
+	            </p:column>
 	                
 	                    
 	            <p:column> 
 	                <f:facet name="header">Opções</f:facet>
-	                
-	                <p:commandButton action="#{bookView.deleteBook}" value="Editar" styleClass="btn btn-danger" icon="ui-icon-pencil" >
-	                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
-	                </p:commandButton>
-	                
-	                <p:commandButton action="#{bookView.deleteBook}" value="Deletar" styleClass="btn btn-danger" icon="ui-icon-trash" >
+	                <p:commandButton action="#{bookView.deleteBook}" value="Deletar" styleClass="btn btn-danger" icon="ui-icon-trash" update="bookTable">
 	                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
 	                </p:commandButton>
 	            </p:column>

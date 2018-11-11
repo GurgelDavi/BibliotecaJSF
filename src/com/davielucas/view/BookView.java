@@ -25,8 +25,7 @@ public class BookView {
 	
 	public String deleteBook(){
 		bookDao.delete(selected.getBookId());
-		return "main";
-		
+		return "/main.xhtml";
 	}
 	
 	public Book getSelected() {
@@ -70,15 +69,25 @@ public class BookView {
 	}
 	
 	public String createBook() {
-		Book newBook = new Book();
-		newBook.setTitle(this.title);
-		newBook.setAuthor(this.author);
-		newBook.setEdition(this.edition);
-		newBook.setPublisher(this.publisher);
-		newBook.setAvailable(true);
+		try {
+			Book  newBook = new Book();
+			newBook.setTitle(this.title);
+			newBook.setAuthor(this.author);
+			newBook.setEdition(this.edition);
+			newBook.setPublisher(this.publisher);
+			newBook.setAvailable(true);
+			bookDao.create(newBook);
+			
+		} catch (Exception e) {
+			System.out.println("BookView.createBook() exception: "+e.getMessage());
+			
+		} finally {
+			setTitle(null);
+			setAuthor(null);
+			setEdition(null);
+			setPublisher(null);
+		}
 		
-		bookDao.create(newBook);
-		
-		return "/main.xhtml";
+		return "/main.xhtml?faces-redirect=true";
 	}
 }
