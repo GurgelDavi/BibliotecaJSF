@@ -28,10 +28,26 @@ public class UserDaoImpl {
 			em.close();
 		}
 	}
+	public User getUserByEmail(String userEmail) {
+		// TODO Auto-generated method stub
+		EntityManager em = ResourcePersistence.getEntityManager();
+		try {
+			User user = (User) em.createQuery(
+					"SELECT u FROM user u where u.email = :email")
+					.setParameter("email", userEmail).getSingleResult();
+			
+			System.out.println("Encontrado " + userEmail);
+			return user;
+		} catch (Exception e) {
+			System.err.println("getUserByEmail exception " + e.getMessage());
+			return null;
+		} finally {
+			em.close();
+		}
+	}
 	
 	
 	public void create(User obj) {
-		// TODO Auto-generated method stub
 		EntityManager em = ResourcePersistence.getEntityManager();
 		try {
 			em.getTransaction().begin();
@@ -74,5 +90,4 @@ public class UserDaoImpl {
 			em.close();
 		}
 	}
-	
 }

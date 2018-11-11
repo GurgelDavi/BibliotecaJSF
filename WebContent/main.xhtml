@@ -10,7 +10,7 @@
 <h:body>
       <h:form>  
             <p:outputLabel value="Login efetuado com sucesso! Bem vindo ao sistema!"></p:outputLabel>
-            #{LoginMB.user.email}
+            #{LoginMB.user.email} #{user.isAdm}
       </h:form>
       
       <div class="ui-g">
@@ -57,7 +57,7 @@
 	                    
 	            <p:column> 
 	                <f:facet name="header">Opções</f:facet>
-	                <p:commandButton action="#{bookView.deleteBook}" value="Deletar" styleClass="btn btn-danger" icon="ui-icon-trash" update="bookTable">
+	                <p:commandButton action="#{bookView.deleteBook}" value="Deletar" icon="ui-icon-trash" update="bookTable">
 	                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
 	                </p:commandButton>
 	            </p:column>
