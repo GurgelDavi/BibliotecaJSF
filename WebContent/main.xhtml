@@ -13,30 +13,30 @@
             #{LoginMB.user.email}
       </h:form>
       <h:form id="bookForm">
-        <h:dataTable id="bookTable" binding="#{table}" value="#{bookView.allBooks}" var="book" styleClass="table table-striped table-bordered tableUpdated">
-            <h:column>
+        <p:dataTable id="bookTable" binding="#{table}" value="#{bookView.allBooks}" var="book" styleClass="table table-striped table-bordered tableUpdated">
+            <p:column>
                 <f:facet name="header">Id</f:facet>
                 <h:outputText value="#{book.bookId}" />                
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
                 <f:facet name="header">Título </f:facet>
                 <h:outputText value="#{book.title}" />
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
                 <f:facet name="header">Editora </f:facet>
                 <h:outputText value="#{book.publisher}" />
-            </h:column>
-            <h:column>
+            </p:column>
+            <p:column>
                 <f:facet name="header">Edição </f:facet>
                 <h:outputText value="#{book.edition}" />
-            </h:column>           
-<!--             <h:column> -->
-<!--                 <f:facet name="header">Delete</f:facet> -->
-<!--                 <h:commandButton action="#{bookView.deleteContact}" value="Delete" styleClass="btn btn-danger" > -->
-<!--                 	<f:setPropertyActionListener target="#{bookView.selected}" value="#{contact}" /> -->
-<!--                 </h:commandButton> -->
-<!--             </h:column> -->
-        </h:dataTable>
+            </p:column>           
+            <p:column> 
+                <f:facet name="header">Delete</f:facet>
+                <h:commandButton action="#{bookView.deleteBook}" value="Delete" styleClass="btn btn-danger" >
+                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{contact}" />
+                </h:commandButton>
+            </p:column>
+        </p:dataTable>
         <center><h:commandButton action="#{bookView.addNewBook}" value="Add New Book" styleClass="btn btn-success btnSpace" /></center>
     </h:form>
 </h:body>
