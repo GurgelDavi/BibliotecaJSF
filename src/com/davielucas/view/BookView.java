@@ -7,11 +7,11 @@ import com.davielucas.impl.BookDAO;
 import com.davielucas.model.Book;
 
 
-@ManagedBean(name="bookView")
+@ManagedBean
 public class BookView {
 	
 	private Book selected = new Book();
-	private BookDAO cFacetes = new BookDAO();
+	private BookDAO bookDao = new BookDAO();
 	
 	private String title;
 	private String author;
@@ -20,11 +20,11 @@ public class BookView {
 	
 	
 	public List<Book> getAllBooks() {
-		return cFacetes.get();
+		return bookDao.get();
 	}
 	
 	public String deleteBook(){
-		cFacetes.delete(selected.getBookId());
+		bookDao.delete(selected.getBookId());
 		return "/main.xhtml";
 		
 	}
@@ -81,7 +81,7 @@ public class BookView {
 		newBook.setPublisher(this.publisher);
 		newBook.setAvailable(true);
 		
-		cFacetes.create(newBook);
+		bookDao.create(newBook);
 		
 		return "/main.xhtml";
 	}

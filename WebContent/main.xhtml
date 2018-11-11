@@ -33,7 +33,7 @@
             <p:column> 
                 <f:facet name="header">Delete</f:facet>
                 <h:commandButton action="#{bookView.deleteBook}" value="Delete" styleClass="btn btn-danger" >
-                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{contact}" />
+                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
                 </h:commandButton>
             </p:column>
         </p:dataTable>
