@@ -47,14 +47,15 @@ public class AdminsDAO {
 		EntityManager em = ResourcePersistence.getEntityManager();
 		Admin adm = new Admin();
 		try {
-			em.getTransaction().begin();
 			adm = (Admin) em.createQuery(
-					"SELECT a FROM admin a where a.user_id = :userId")
-					.setParameter("userId", obj.getUserId()).getSingleResult();
-			em.getTransaction().commit();
+					"SELECT a FROM admin a where a.user = :userId ")
+					.setParameter("userId", obj)
+					.getSingleResult();
+			
+			System.out.println("Encontrado " + obj.getEmail());
 			return adm;
 		} catch (Exception e) {
-			System.err.println("read() exception" + e.getMessage());
+			System.err.println("erro " + e.getMessage());
 			return null;
 		} finally {
 			em.close();

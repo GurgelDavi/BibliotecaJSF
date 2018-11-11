@@ -10,7 +10,7 @@
 <h:body>
       <h:form>  
             <p:outputLabel value="Login efetuado com sucesso! Bem vindo ao sistema!"></p:outputLabel>
-            #{LoginMB.user.email}
+            #{LoginMB.user.email} #{user.isAdm}
       </h:form>
       <h:form id="bookForm">
         <h:dataTable id="bookTable" binding="#{table}" value="#{bookView.getAllBooks()}" var="book" styleClass="table table-striped table-bordered tableUpdated">
@@ -30,14 +30,14 @@
                 <f:facet name="header">Edição </f:facet>
                 <h:outputText value="#{book.edition}" />
             </h:column>           
-<!--             <h:column> -->
-<!--                 <f:facet name="header">Delete</f:facet> -->
-<!--                 <h:commandButton action="#{bookView.deleteContact}" value="Delete" styleClass="btn btn-danger" > -->
-<!--                 	<f:setPropertyActionListener target="#{bookView.selected}" value="#{contact}" /> -->
-<!--                 </h:commandButton> -->
-<!--             </h:column> -->
+            <h:column rendered="#{LoginMB.isAdm()}">
+                <f:facet name="header">Delete</f:facet>
+                <h:commandButton action="#{bookView.deleteContact}" value="Delete" styleClass="btn btn-danger" >
+                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{contact}" />
+                </h:commandButton>
+            </h:column>
         </h:dataTable>
-        <center><h:commandButton action="#{bookView.addNewBook}" value="Add New Book" styleClass="btn btn-success btnSpace" /></center>
+        <center><h:commandButton rendered="#{LoginMB.isAdm()}" action="#{bookView.addNewBook}" value="Add New Book" styleClass="btn btn-success btnSpace" /></center>
     </h:form>
 </h:body>
 </html>
