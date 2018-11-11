@@ -13,7 +13,7 @@
             #{LoginMB.user.email}
       </h:form>
       <h:form id="bookForm">
-        <h:dataTable id="bookTable" binding="#{table}" value="#{bookView.getAllBooks()}" var="book" styleClass="table table-striped table-bordered tableUpdated">
+        <h:dataTable id="bookTable" binding="#{table}" value="#{bookView.allBooks}" var="book" styleClass="table table-striped table-bordered tableUpdated">
             <h:column>
                 <f:facet name="header">Id</f:facet>
                 <h:outputText value="#{book.bookId}" />                
