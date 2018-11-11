@@ -1,5 +1,6 @@
 package com.davielucas.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,8 +15,14 @@ public class BookDAO {
 		
 		EntityManager em = ResourcePersistence.getEntityManager();
 		try {
-			TypedQuery<Book> query = em.createNamedQuery("SELECT * FROM books", Book.class);
-			return query.getResultList();
+			em.getTransaction().begin();
+			//TypedQuery<Book> query = em.createNamedQuery("SELECT * FROM books", Book.class);
+			List books = new ArrayList<Book>();
+			books = em.createQuery("SELECT b FROM book b").getResultList();
+			em.getTransaction().commit();
+			return books;
+			
+			//return //query.getResultList();
 			
 			
 		} catch (Exception e) {

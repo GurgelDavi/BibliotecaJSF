@@ -5,6 +5,7 @@
 	<persistence-unit name="BibliotecaJSF">
 		<class>com.davielucas.model.User</class>
 		<class>com.davielucas.model.Book</class>
+		<class>com.davielucas.model.Admins</class>
 		
 		
 		<!-- Configuring JDBC Connection -->
