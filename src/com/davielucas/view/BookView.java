@@ -62,6 +62,7 @@ public class BookView {
 	public String addNewBook(){
 		return "/newBook.xhtml";
 	}
+	
 	public String getAuthor() {
 		return author;
 	}
@@ -84,7 +85,7 @@ public class BookView {
 		this.title = title;
 	}
 	
-	public String addNewContact(BookView c) {
+	public String addNewBook(BookView c) {
 		selected.setTitle(c.getTitle());
 		selected.setAuthor(c.getAuthor());
 		selected.setAvailable(true);
