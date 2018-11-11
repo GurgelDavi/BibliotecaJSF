@@ -12,32 +12,59 @@
             <p:outputLabel value="Login efetuado com sucesso! Bem vindo ao sistema!"></p:outputLabel>
             #{LoginMB.user.email}
       </h:form>
-      <h:form id="bookForm">
-        <p:dataTable id="bookTable" binding="#{table}" value="#{bookView.allBooks}" var="book" styleClass="table table-striped table-bordered tableUpdated">
-            <p:column>
-                <f:facet name="header">Id</f:facet>
-                <h:outputText value="#{book.bookId}" />                
-            </p:column>
-            <p:column>
-                <f:facet name="header">Título </f:facet>
-                <h:outputText value="#{book.title}" />
-            </p:column>
-            <p:column>
-                <f:facet name="header">Editora </f:facet>
-                <h:outputText value="#{book.publisher}" />
-            </p:column>
-            <p:column>
-                <f:facet name="header">Edição </f:facet>
-                <h:outputText value="#{book.edition}" />
-            </p:column>           
-            <p:column> 
-                <f:facet name="header">Delete</f:facet>
-                <h:commandButton action="#{bookView.deleteBook}" value="Delete" styleClass="btn btn-danger" >
-                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
-                </h:commandButton>
-            </p:column>
-        </p:dataTable>
-        <center><h:commandButton action="#{bookView.addNewBook}" value="Add New Book" styleClass="btn btn-success btnSpace" /></center>
-    </h:form>
+      
+      <div class="ui-g">
+      	<div class="ui-g-9">
+      		<h2 style="margin: 0">Livros Cadastrados:</h2>
+      	</div>
+      	<div class="ui-g-3">
+      		<p:commandButton 
+      			style="width: 100%" action="/newBook.xhtml" 
+      			value="Adicionar Livro" styleClass="btn btn-success btnSpace" icon="ui-icon-plus"
+      		/>
+      	</div>
+      </div>
+      
+      <div class="ui-g">
+      	<div class="ui-g-12">
+      		<p:dataTable id="bookTable" binding="#{table}" value="#{bookView.allBooks}" var="book" styleClass="table table-striped table-bordered tableUpdated">
+	            <p:column>
+	                <f:facet name="header">Id</f:facet>
+	                <h:outputText value="#{book.bookId}" />                
+	            </p:column>
+	            
+	            
+	            <p:column>
+	                <f:facet name="header">Título </f:facet>
+	                <h:outputText value="#{book.title}" />
+	            </p:column>
+	            
+	            
+	            <p:column>
+	                <f:facet name="header">Editora </f:facet>
+	                <h:outputText value="#{book.publisher}" />
+	            </p:column>
+	            
+	            
+	            <p:column>
+	                <f:facet name="header">Edição </f:facet>
+	                <h:outputText value="#{book.edition}" />
+	            </p:column>   
+	                
+	                    
+	            <p:column> 
+	                <f:facet name="header">Opções</f:facet>
+	                
+	                <p:commandButton action="#{bookView.deleteBook}" value="Editar" styleClass="btn btn-danger" icon="ui-icon-pencil" >
+	                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
+	                </p:commandButton>
+	                
+	                <p:commandButton action="#{bookView.deleteBook}" value="Deletar" styleClass="btn btn-danger" icon="ui-icon-trash" >
+	                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
+	                </p:commandButton>
+	            </p:column>
+	        </p:dataTable>
+      	</div>
+	</div>
 </h:body>
 </html>

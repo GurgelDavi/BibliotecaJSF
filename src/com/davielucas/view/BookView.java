@@ -25,7 +25,7 @@ public class BookView {
 	
 	public String deleteBook(){
 		bookDao.delete(selected.getBookId());
-		return "/main.xhtml";
+		return "main";
 		
 	}
 	
@@ -39,10 +39,6 @@ public class BookView {
 	
 	public String getTitle() {
 		return title;
-	}
-	
-	public String addNewBook(){
-		return "/newBook.xhtml";
 	}
 	
 	public String getAuthor() {
@@ -73,7 +69,7 @@ public class BookView {
 		this.title = title;
 	}
 	
-	public String addNewBook(BookView c) {
+	public String createBook() {
 		Book newBook = new Book();
 		newBook.setTitle(this.title);
 		newBook.setAuthor(this.author);
