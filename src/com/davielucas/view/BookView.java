@@ -90,4 +90,11 @@ public class BookView {
 		
 		return "/main.xhtml?faces-redirect=true";
 	}
+	public String reserve() {
+		return "/reserveBook.xhtml";
+	}
+	public void reserveB() {
+		System.out.println(this.selected.getTitle());
+		
+	}
 }

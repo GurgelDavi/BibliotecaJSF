@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      
+<h:head>
+    <title>Novo Livro</title>
+    <style>
+    	input, button {
+    		box-sizing: border-box;
+    		width: 100%;
+    		margin-top: 16px;
+    	}
+    </style>
+</h:head>
+
+<h:body>
+	<div class="ui-g">
+	
+		<div class="ui-g-4"></div>
+		
+		<div class="ui-g-4">
+			<h2>Pedido de reserva</h2>
+			<p:commandButton value="Reserve" action="#{bookView.reserveB()}" icon="ui-icon-plus"/>
+		</div>
+	</div>
+</h:body>
+</html>
