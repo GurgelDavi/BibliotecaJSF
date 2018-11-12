@@ -13,24 +13,29 @@ import javax.persistence.Table;
 @Entity (name="admin")
 @Table	(name="admins")
 public class Admin {
+	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="admin_id",nullable=false,unique=true)
 	private int adminId;
+	
 	@OneToOne
+	@JoinColumn(name="user_id")
 	private User user;
+	
 	public User getUser() {
 		return user;
 	}
+	
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 	public int getAdminId() {
 		return adminId;
 	}
+	
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
-	
-	
 }

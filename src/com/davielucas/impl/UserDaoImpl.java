@@ -37,6 +37,7 @@ public class UserDaoImpl {
 					.setParameter("email", userEmail).getSingleResult();
 			
 			System.out.println("Encontrado " + userEmail);
+			System.out.println(user.getUserId());
 			return user;
 		} catch (Exception e) {
 			System.err.println("getUserByEmail exception " + e.getMessage());

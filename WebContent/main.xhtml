@@ -10,7 +10,7 @@
 <h:body>
       <h:form>  
             <p:outputLabel value="Login efetuado com sucesso! Bem vindo ao sistema!"></p:outputLabel>
-            #{LoginMB.user.email} #{user.isAdm}
+            #{LoginMB.user.email}
       </h:form>
       
       <div class="ui-g">
@@ -18,7 +18,7 @@
       		<h2 style="margin: 0">Livros Cadastrados:</h2>
       	</div>
       	<div class="ui-g-3">
-      		<p:button rendered="#{LoginMB.isAdm()}" style="width: 100%" outcome="newBook" value="Adicionar Livro" icon="ui-icon-plus" />
+      		<p:button rendered="#{LoginMB.isAdm}" style="width: 100%" outcome="newBook" value="Adicionar Livro" icon="ui-icon-plus" />
       	</div>
       </div>
       

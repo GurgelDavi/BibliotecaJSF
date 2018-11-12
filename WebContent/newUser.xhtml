@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Novo Usuário</title>
+	
+	<style>
+		button, input {
+			width: 100%;
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<div class="ui-g">
+		<div class="ui-g-4"></div>
+		
+		<div class="ui-g-4">
+			<h2>Novo Usuário:</h2>
+			
+			<h:form id="new-user-form">        
+		        <div class="ui-g">
+		        	<div class="ui-g-3">
+		        		<p:outputLabel for="user-email" value="Email:"/>
+		        	</div>
+		        	<div class="ui-g-9">
+		        		<p:inputText id="user-email" value="#{newUserView.email}" required="true" requiredMessage="Campo obrigatório." />
+		        	</div>
+		            <h:message for="user-email" />
+		        </div>
+		        
+		        <div class="ui-g">
+		        	<div class="ui-g-3">
+		        		<p:outputLabel for="user-password" value="Senha:"/>
+		        	</div>
+		        	<div class="ui-g-9">
+		        		<p:password id="user-password" value="#{newUserView.password}" required="true" requiredMessage="Campo obrigatório." />
+		        	</div>
+		            <h:message for="user-password" />
+		        </div>
+		        
+		        <div class="ui-g">
+		        	<div class="ui-g-3">
+		        		<p:outputLabel for="user-is-admin" value="Admin?"/>
+		        	</div>
+		        	<div class="ui-g-9">
+		        		<p:selectBooleanCheckbox id="user-is-admin" value="#{newUserView.isAdmin}" required="true" />
+		        	</div>
+		        </div>
+		        
+		        <div class="ui-g">
+		        	<div class="ui-g-12">
+		        		<p:commandButton value="Adicionar" action="#{newUserView.persist}" icon="ui-icon-plus"/>
+		        	</div>
+		        </div>
+		    </h:form>
+		</div>
+	</div>
+</h:body>
+</html>
