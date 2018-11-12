@@ -20,17 +20,18 @@ public class UserLoginView {
 
 	public String send() {
 		user = userDao.getUser(user.getEmail(), user.getPassword());
-		if (user==null) {
+		if (user == null) {
 			FacesContext.getCurrentInstance().addMessage(
 					null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!",
                             "Erro no Login!"));
-			return null;
+			return "/login.xhtml";
+			
 		} else {
 			this.adm = admDao.read(user);
-			if(adm!=null) {
-				this.setAdm(true);
+			if(adm != null) {
+				this.setIsAdm(true);
 			}
-			return "/main";
+			return "/main.xhtml";
 		}
 	}
 	
@@ -50,11 +51,11 @@ public class UserLoginView {
 		this.adm = adm;
 	}
 
-	public boolean isAdm() {
+	public boolean getIsAdm() {
 		return isAdm;
 	}
 
-	public void setAdm(boolean isAdm) {
+	public void setIsAdm(boolean isAdm) {
 		this.isAdm = isAdm;
 	}
 

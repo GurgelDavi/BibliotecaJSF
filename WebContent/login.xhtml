@@ -3,23 +3,58 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-  
+	<style>
+		button, input {
+			width: 100%;
+		}
+		
+		div, a {
+			text-align: center;
+		}
+	</style>
 </h:head>
   
 <h:body>
-      <h:form>
-            <p:messages id="messages" />
-            <p:panelGrid columns="2">
-                  <p:outputLabel for="userEmail" value="email:" />
-                  <p:inputText id="userEmail" value="#{LoginMB.user.email}" />
-                   
-                  <p:outputLabel for="password" value="Password:" />
-                  <p:password id="password" value="#{LoginMB.user.password}" />
-                   
-                  <p:commandButton value="Enviar" icon="ui-icon-star" action="#{LoginMB.send()}" ajax="false">
-                  </p:commandButton>
-  
-            </p:panelGrid>
-      </h:form>
+	<div class="ui-g">
+		<div class="ui-g-4"></div>
+		<div class="ui-g-4">
+			<h2>Bem-vindo à Biblioteca Online!</h2>
+			
+			<h:form>
+				<p:messages id="messages" />
+				<div class="ui-g">
+					<div class="ui-g-4">
+						<p:outputLabel for="userEmail" value="Email:" />	
+					</div>
+					<div class="ui-g-8">
+						<p:inputText id="userEmail" value="#{LoginMB.user.email}" />	
+					</div>
+				</div>
+				
+				<div class="ui-g">
+					<div class="ui-g-4">
+						<p:outputLabel for="password" value="Password:" />	
+					</div>
+					<div class="ui-g-8">
+						<p:password id="password" value="#{LoginMB.user.password}" />	
+					</div>
+				</div>
+				
+				<div class="ui-g">
+					<div class="ui-g-12">
+						<p:commandButton value="Entrar" icon="ui-icon-shuffle"
+							action="#{LoginMB.send}" ajax="false">
+						</p:commandButton>
+					</div>
+				</div>
+				
+				<div class="ui-g">
+					<div class="ui-g-12">
+						<p:link value="Não é cadastrado? Cadastre-se!" output="/novoUsuario.xhtml"/>
+					</div>
+				</div>
+			</h:form>		
+		</div>
+	</div>
 </h:body>
 </html>

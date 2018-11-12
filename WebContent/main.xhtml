@@ -57,10 +57,10 @@
 	                    
 	            <p:column > 
 	                <f:facet name="header">Opções</f:facet>
-	                <p:commandButton rendered="#{LoginMB.isAdm()}"  action="#{bookView.deleteBook}" value="Deletar" icon="ui-icon-trash" update="bookTable">
+	                <p:commandButton rendered="#{LoginMB.isAdm}"  action="#{bookView.deleteBook}" value="Deletar" icon="ui-icon-trash" update="bookTable">
 	                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
 	                </p:commandButton>
-	                <p:commandButton rendered="#{!LoginMB.isAdm()}"  action="#{bookView.reserve}" value="Reservar" icon="ui-icon-trash" update="bookTable">
+	                <p:commandButton rendered="#{!LoginMB.isAdm}"  action="#{bookView.reserve}" value="Reservar" icon="ui-icon-trash" update="bookTable">
 	                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
 	                </p:commandButton>
 	            </p:column>
