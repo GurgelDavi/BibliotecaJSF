@@ -6,6 +6,7 @@
 		<class>com.davielucas.model.User</class>
 		<class>com.davielucas.model.Book</class>
 		<class>com.davielucas.model.Admin</class>
+		<class>com.davielucas.model.Rent</class>
 		
 		
 		<!-- Configuring JDBC Connection -->
