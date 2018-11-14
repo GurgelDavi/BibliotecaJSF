@@ -30,13 +30,12 @@ public class RentDAO {
 		}
 	}	
 	@SuppressWarnings("unchecked")
-	public List rentsRequest() {
+	public List<Rent> rentsRequest() {
 		EntityManager em = ResourcePersistence.getEntityManager();
 		List<Rent> rentsRequest = new ArrayList<Rent>();
 		try {
 			em.getTransaction().begin();
-			rentsRequest = em.createQuery("SELECT r FROM rent r where r.admin = :adminId")
-					.setParameter("adminId", null)
+			rentsRequest = em.createQuery("SELECT r FROM rent r where r.admin IS NULL")
 					.getResultList();
 			em.getTransaction().commit();
 			return rentsRequest;
@@ -49,7 +48,7 @@ public class RentDAO {
 		
 	}
 	
-	public List read(User obj) {
+	public List<Rent> read(User obj) {
 		EntityManager em = ResourcePersistence.getEntityManager();
 		List<Rent> rent = new ArrayList<Rent>();
 		try {
@@ -68,7 +67,7 @@ public class RentDAO {
 		}	
 	}
 	
-	public List read(Admin obj) {
+	public List<Rent> read(Admin obj) {
 		EntityManager em = ResourcePersistence.getEntityManager();
 		List<Rent> rent = new ArrayList<Rent>();
 		try {

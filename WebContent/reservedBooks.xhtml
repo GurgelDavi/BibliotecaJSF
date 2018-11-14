@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Conceder Reservas</title>
+	<style>
+input, button {
+	box-sizing: border-box;
+	width: 100%;
+	margin-top: 16px;
+}
+</style>
+</h:head>
+
+<h:body>
+	<div class="ui-g">
+
+		<div class="ui-g-4"></div>
+
+		<div class="ui-g-4">
+			<h2>Pedido de reserva </h2>
+			<p:dataTable id="rentTable" binding="#{table}"
+				value="#{rentView.getAllRequests()}" var="re"
+				styleClass="table table-striped table-bordered tableUpdated">
+				<p:column>
+					<f:facet name="header">Pedido</f:facet>
+					<h:outputText value="#{re.rentId}" />
+				</p:column>
+
+
+				<p:column>
+					<f:facet name="header">Título </f:facet>
+					<h:outputText value="#{re.book.title}" />
+				</p:column>
+
+
+				<p:column>
+					<f:facet name="header">Usuario </f:facet>
+					<h:outputText value="#{re.user.email}" />
+				</p:column>
+
+
+				<p:column>
+					<f:facet name="header">Opções</f:facet>
+					<p:commandButton rendered="#{LoginMB.isAdm}"
+						action="#{bookView.deleteBook}" value="Deletar"
+						icon="ui-icon-trash" update="bookTable">
+						<f:setPropertyActionListener target="#{bookView.selected}"
+							value="#{book}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</div>
+	</div>
+</h:body>
+</html>

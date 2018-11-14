@@ -60,9 +60,13 @@
 	                <p:commandButton rendered="#{LoginMB.isAdm}"  action="#{bookView.deleteBook}" value="Deletar" icon="ui-icon-trash" update="bookTable">
 	                	<f:setPropertyActionListener target="#{bookView.selected}" value="#{book}"/>
 	                </p:commandButton>
-	                <p:button rendered="#{!LoginMB.isAdm}" style="width: 100%" outcome="reserveBook" value="Reservar" icon="ui-icon-plus" />	                
+	                <p:commandButton rendered="#{!LoginMB.isAdm}" disabled="#{!book.available}"  action="#{rentView.requestRent}" value="Reservar" icon="ui-icon-trash" update="bookTable">
+	                	<f:setPropertyActionListener target="#{rentView.selected}" value="#{book}"/>
+	                	<f:setPropertyActionListener target="#{rentView.renter}" value="#{LoginMB.user}"/>
+	                </p:commandButton>       	                
 	            </p:column>
 	        </p:dataTable>
+	        <p:button rendered="#{LoginMB.isAdm}" style="width: 100%" outcome="reservedBooks" value="Reservas" icon="ui-icon-plus" />
       	</div>
 	</div>
 </h:body>
