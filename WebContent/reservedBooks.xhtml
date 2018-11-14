@@ -18,11 +18,11 @@ input, button {
 <h:body>
 	<div class="ui-g">
 
-		<div class="ui-g-4"></div>
+		<div class="ui-g-2"></div>
 
-		<div class="ui-g-4">
-			<h2>Pedido de reserva </h2>
-			<p:dataTable id="rentTable" binding="#{table}"
+		<div class="ui-g-8">
+			<h2>Pedido de reserva #{LoginMB.user.email}</h2>
+			<p:dataTable id="rentTable" binding="#{table}" 
 				value="#{rentView.getAllRequests()}" var="re"
 				styleClass="table table-striped table-bordered tableUpdated">
 				<p:column>
@@ -45,9 +45,9 @@ input, button {
 
 				<p:column>
 					<f:facet name="header">Opções</f:facet>
-					<p:commandButton rendered="#{LoginMB.isAdm}" value="Conceder">
-						<f:setPropertyActionListener target="#{bookView.selected}"
-							value="#{book}" />
+					<p:commandButton rendered="#{LoginMB.isAdm}" action="#{rentView.yieldRequest()}" value="Conceder">
+						<f:setPropertyActionListener target="#{rentView.request}"	value="#{re}" />
+						<f:setPropertyActionListener target="#{rentView.currentAdm}" value="#{LoginMB.adm}"/>
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
