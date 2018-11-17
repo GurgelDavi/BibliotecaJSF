@@ -22,35 +22,42 @@ input, button {
 
 		<div class="ui-g-8">
 			<h2>Pedido de reserva #{LoginMB.user.email}</h2>
-			<p:dataTable id="rentTable" binding="#{table}" 
-				value="#{rentView.getAllRequests()}" var="re"
-				styleClass="table table-striped table-bordered tableUpdated">
-				<p:column>
-					<f:facet name="header">Pedido</f:facet>
-					<h:outputText value="#{re.rentId}" />
-				</p:column>
+			<h:form>
+				<p:dataTable id="rentTable" binding="#{table}"
+					value="#{rentView.getAllRequests()}" var="re"
+					styleClass="table table-striped table-bordered tableUpdated">
+					<p:column>
+						<f:facet name="header">Pedido</f:facet>
+						<h:outputText value="#{re.rentId}" />
+					</p:column>
 
 
-				<p:column>
-					<f:facet name="header">Título </f:facet>
-					<h:outputText value="#{re.book.title}" />
-				</p:column>
+					<p:column>
+						<f:facet name="header">Título </f:facet>
+						<h:outputText value="#{re.book.title}" />
+					</p:column>
 
 
-				<p:column>
-					<f:facet name="header">Usuario </f:facet>
-					<h:outputText value="#{re.user.email}" />
-				</p:column>
+					<p:column>
+						<f:facet name="header">Usuario </f:facet>
+						<h:outputText value="#{re.user.email}" />
+					</p:column>
 
 
-				<p:column>
-					<f:facet name="header">Opções</f:facet>
-					<p:commandButton rendered="#{LoginMB.isAdm}" action="#{rentView.yieldRequest()}" value="Conceder">
-						<f:setPropertyActionListener target="#{rentView.request}"	value="#{re}" />
-						<f:setPropertyActionListener target="#{rentView.currentAdm}" value="#{LoginMB.adm}"/>
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
+					<p:column>
+						<f:facet name="header">Opções</f:facet>
+						<p:commandButton immediate="true" rendered="#{LoginMB.isAdm}"
+							action="#{rentView.yieldRequest}" value="Conceder"
+							update="rentTable" ajax="false">
+							<f:setPropertyActionListener target="#{rentView.request}"
+								value="#{re}" update="rentTable" />
+							<f:setPropertyActionListener target="#{rentView.currentAdm}"
+								value="#{LoginMB.adm}" update="rentTable" />
+						</p:commandButton>
+
+					</p:column>
+				</p:dataTable>
+			</h:form>
 		</div>
 	</div>
 </h:body>

@@ -1,5 +1,6 @@
 package com.davielucas.view;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -104,10 +105,7 @@ public class RentView {
 	}
 	public void yieldRequest()
 	{
-		System.out.println("--------------------------------------------------------");
-		System.out.println(this.request.getBook().getTitle());
-		System.out.println(this.currentAdm.getUser().getEmail());
-		System.out.println("--------------------------------------------------------");
+		rentDao.concedeRent(request, currentAdm);
 	}
 	
 	
