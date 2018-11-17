@@ -33,6 +33,31 @@ public class BookDAO {
 			em.close();
 		}
 	}
+
+	public List<Book> getDue() {
+		
+		EntityManager em = ResourcePersistence.getEntityManager();
+		try {
+			em.getTransaction().begin();
+			//TypedQuery<Book> query = em.createNamedQuery("SELECT * FROM books", Book.class);
+			List books = new ArrayList<Book>();
+			books = em.createQuery("SELECT b FROM book b where b.available IS FALSE").getResultList();
+			
+			em.getTransaction().commit();
+			return books;
+			
+			//return //query.getResultList();
+			
+			
+		} catch (Exception e) {
+			System.out.println("BookDAO.get() exception: " + e.getMessage());
+			return null;
+			
+		} finally {
+			em.close();
+		}
+	}
+	
 	
 	
 	public Book get(int bookId) {

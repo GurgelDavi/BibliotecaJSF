@@ -23,36 +23,35 @@ input, button {
 		<div class="ui-g-8">
 			<h2>Pedido de reserva #{LoginMB.user.email}</h2>
 			<h:form>
-				<p:dataTable id="rentTable" binding="#{table}"
-					value="#{rentView.getAllRequests()}" var="re"
+				<p:dataTable id="returnTable" binding="#{table}"
+					value="#{rentView.getAllDueReturn()}" var="re"
 					styleClass="table table-striped table-bordered tableUpdated">
 					<p:column>
-						<f:facet name="header">Pedido</f:facet>
-						<h:outputText value="#{re.rentId}" />
+						<f:facet name="header">Id Do Livro</f:facet>
+						<h:outputText value="#{re.bookId}" />
 					</p:column>
 
 
 					<p:column>
 						<f:facet name="header">Título </f:facet>
-						<h:outputText value="#{re.book.title}" />
+						<h:outputText value="#{re.title}" />
 					</p:column>
 
 
 					<p:column>
-						<f:facet name="header">Usuario </f:facet>
-						<h:outputText value="#{re.user.email}" />
+						<f:facet name="header">Disponibiliadade </f:facet>
+						<h:outputText value="#{re.available}" />
 					</p:column>
 
 
 					<p:column>
 						<f:facet name="header">Opções</f:facet>
 						<p:commandButton immediate="true" rendered="#{LoginMB.isAdm}"
-							action="#{rentView.yieldRequest}" value="Conceder"
+							action="#{rentView.returnBook}" value="Retornar a Biblioteca"
 							update="rentTable" ajax="false">
-							<f:setPropertyActionListener target="#{rentView.request}"
+							<f:setPropertyActionListener target="#{rentView.selected}"
 								value="#{re}" update="rentTable" />
-							<f:setPropertyActionListener target="#{rentView.currentAdm}"
-								value="#{LoginMB.adm}" update="rentTable" />
+							
 						</p:commandButton>
 
 					</p:column>

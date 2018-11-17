@@ -103,6 +103,17 @@ public class RentView {
 		return rentDao.rentsRequest();
 
 	}
+	public List<Book> getAllDueReturn() {
+		// TODO Auto-generated method stub
+		System.out.println("loading Return request");
+		return bookDao.getDue();
+
+	}
+	public void returnBook() {
+		selected.setAvailable(true);
+		bookDao.update(selected);
+
+	}
 	public void yieldRequest()
 	{
 		rentDao.concedeRent(request, currentAdm);
